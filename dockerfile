@@ -1,18 +1,10 @@
-# Base image
-FROM python:3.12-slim
+FROM python:3.11-slim
 
-# Set working directory in the container
 WORKDIR /app
-
-# Copy requirements.txt and install dependencies
-COPY requirements.txt .
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+RUN git config --global credential.helper store
+COPY app .
 
-# Copy the rest of the application code into the container
-COPY . .
-
-# Expose the port for the Gradio app
-EXPOSE 7860
-
-# Run the Gradio app
-CMD ["python", "app/gradio_app.py"]
+CMD ["python", "main.py"]

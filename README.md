@@ -1,4 +1,4 @@
-**PriceProphet** is a machine learning-powered application designed to predict the price of a product based on its description. This project aims to combine state-of-the-art natural language processing (NLP) techniques with deep learning to build a robust pricing model. Leveraging the **Llama model** from Hugging Face's library, this project will demonstrate the end-to-end workflow of fine-tuning an NLP model, evaluating its performance, and deploying it via an intuitive frontend interface.
+**PriceProphet** is a GenAI application designed to predict the price of a product based on its description. This project aims to combine state-of-the-art natural language processing (NLP) techniques with deep learning to build a robust pricing model. Leveraging the fine tuned **Llama model** from Hugging Face's library and deploying it via an intuitive frontend interface.
 
 ### Key Features:
 1. **Data Collection and Preprocessing:**
@@ -33,17 +33,16 @@
 
 ### Technologies Used:
 - **Backend:**
-  - Hugging Face Transformers (Llama model)
-  - PyTorch/TensorFlow
-  - scikit-learn for evaluation
+    - Hugging Face Transformers (Llama model)
+    - PyTorch/TensorFlow
+    - Flask
 
 - **Frontend:**
-  - Gradio for the interactive interface
+    - Gradio for the interactive interface
 
 - **Infrastructure:**
-  - Hugging Face Datasets and Model Hub
-  - YAML for configuration management
-  - Docker (optional) for containerization
+    - Hugging Face Datasets and Model Hub
+    - Docker for containerization
 
 ---
 
@@ -57,3 +56,10 @@
 ### Why This Project?
 PriceProphet is an excellent project for anyone seeking to enhance their machine learning and NLP skills while solving a real-world problem. It provides hands-on experience in data processing, model training, evaluation, and deployment, making it a perfect side project for learning and skill development.
 
+### Requirements
+1- A system with nvidia graphic card
+2- Docker and docker compose
+
+### How To Run?
+1- Create an .env file inside the app directory and add your hugging face token as HF_TOKEN=<your token>.
+2- Run docker-compose up --build.

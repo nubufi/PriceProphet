@@ -1,12 +1,23 @@
 services:
-  priceprophet-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  llama_app:
+    build: .
     ports:
-      - "7860:7860"  # Map Gradio app port
+      - "5000:5000"  # Map Gradio app port
     volumes:
-      - .:/app       # Mount the project directory for live code updates (optional)
+      - ./app:/app       # Mount the project directory for live code updates (optional)
     environment:
       - TRANSFORMERS_CACHE=/app/.cache/huggingface
+      - FLASK_ENV=development
+    networks:
+      - llama_network
+  gradio_app:
+    build: 
+      context: ./gradio
+    ports:
+      - "7860:7860"
+    networks:
+      - llama_network
 
+networks:
+  llama_network:
+    driver: bridge
